@@ -29,7 +29,7 @@ namespace ArduinoServoControl
         private void InitializeControls()
         {
             // Инициализация значений для трекбаров
-            trackBarA.Minimum = 0;
+            trackBarA.Minimum = 10;
             trackBarA.Maximum = 120;
             trackBarA.Value = 66;
 
@@ -37,20 +37,20 @@ namespace ArduinoServoControl
             trackBarB.Maximum = 125;
             trackBarB.Value = 90;
 
-            trackBarC.Minimum = 20;
+            trackBarC.Minimum = 25;
             trackBarC.Maximum = 90;
             trackBarC.Value = 50;
 
-            trackBarD.Minimum = 0;
+            trackBarD.Minimum = 10;
             trackBarD.Maximum = 120;
             trackBarD.Value = 90;
 
             trackBarE.Minimum = 10;
-            trackBarE.Maximum = 120;
+            trackBarE.Maximum = 150;
             trackBarE.Value = 120;
 
-            trackBarF.Minimum = 0;
-            trackBarF.Maximum = 180;
+            trackBarF.Minimum = 10;
+            trackBarF.Maximum = 155;
             trackBarF.Value = 90;
 
             // Обновление меток с текущими значениями
@@ -137,7 +137,7 @@ namespace ArduinoServoControl
         {
             if (isConnected)
             {
-                //serialPort.WriteLine("#auto");
+                serialPort.WriteLine("#auto");
                 txtLog.AppendText("Включен автоматический режим" + Environment.NewLine);
             }
         }
@@ -146,7 +146,7 @@ namespace ArduinoServoControl
         {
             if (isConnected)
             {
-                //serialPort.WriteLine("#com");
+                serialPort.WriteLine("#com");
                 txtLog.AppendText("Включен режим управления с компьютера" + Environment.NewLine);
             }
         }
@@ -155,7 +155,7 @@ namespace ArduinoServoControl
         {
             if (isConnected)
             {
-                //serialPort.WriteLine("#stop");
+                serialPort.WriteLine("#stop");
                 txtLog.AppendText("Режим остановки" + Environment.NewLine);
             }
         }
@@ -184,19 +184,14 @@ namespace ArduinoServoControl
         {
             if (!isConnected) return;
 
-            /*serialPort.WriteLine($"{trackBarA.Value}a");
+            serialPort.WriteLine($"{trackBarA.Value}a");
             serialPort.WriteLine($"{trackBarB.Value}b");
             serialPort.WriteLine($"{trackBarC.Value}c");
             serialPort.WriteLine($"{trackBarD.Value}d");
             serialPort.WriteLine($"{trackBarE.Value}e");
-            serialPort.WriteLine($"{trackBarF.Value}f");*/
+            serialPort.WriteLine($"{trackBarF.Value}f");
 
-            txtLog.AppendText($"{trackBarA.Value}a"+ Environment.NewLine);
-            txtLog.AppendText($"{trackBarB.Value}b"+ Environment.NewLine);
-            txtLog.AppendText($"{trackBarC.Value}c"+ Environment.NewLine);
-            txtLog.AppendText($"{trackBarD.Value}d"+ Environment.NewLine);
-            txtLog.AppendText($"{trackBarE.Value}e"+ Environment.NewLine);
-            txtLog.AppendText($"{trackBarF.Value}f"+ Environment.NewLine);
+            
 
             UpdateLabels();
         }
